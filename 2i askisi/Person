@@ -1,0 +1,25 @@
+package musicproject;
+
+import java.util.HashMap;
+public class Person {
+	String firstname;
+	String lastname;
+	String sex;
+	int age;
+	
+	public Person() {
+		
+	}
+	public Person(String name, String lastname , int age , String sex) {
+		firstname = name;
+		this.lastname = lastname;
+		this.age = age;
+		this.sex = sex;
+	}
+	public String toString() {
+		 
+		HashMap<String, Integer> ilikia = new HashMap<>();
+		ilikia.put( "age" ,age);
+		return firstname + lastname + sex + ilikia.get("age");
+	}
+}
