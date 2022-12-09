@@ -1,0 +1,94 @@
+import java.util.ArrayList;
+import java.util.Random;
+
+public class ARExample {
+	int n;
+	ArrayList<Float> list1 = new ArrayList<Float>(n);
+	ArrayList<Float> list2 = new ArrayList<Float>(n);
+	public ARExample() {
+		
+	}
+public ARExample(ArrayList<Float> list1 , ArrayList<Float> list2) {
+		this.list1 = list1;
+		this.list2 = list2;
+	}
+   public float vProd() {
+	   float sum = 0;
+	 
+	   for(int i = 0 ; i< list1.size() ; i++){
+		 sum =sum + list1.get(i)*list2.get(i);
+	   }
+	   
+	return sum;
+	   
+	
+   }
+   public boolean vOrtho(){
+	   
+	   if(vProd()==0 ) {
+		   System.out.println("1" );
+		   return true;}
+	   else {
+		   System.out.println("0" );
+		   return false;}
+	  
+	   
+   }
+	public void fill(int n) {
+		Random k = new Random();
+		
+		for(int i = 0 ; i<n ; i++) {
+			
+			float rand = k.nextFloat();
+			list1.add(i , rand);
+				
+		}
+		for(int i=0 ; i<n; i++) {
+			float rand  =  k.nextFloat();
+			list2.add(i , rand);
+		}
+			
+	}
+	public static void statistics(ArrayList<Float> matrix) {
+		float min = matrix.get(0);
+		float max= matrix.get(0);
+		float mean = matrix.get(matrix.size()/2);
+		for(int i = 0 ; i< matrix.size()-1; i++) {
+			if(matrix.get(i) < matrix.get(i+1)) {
+				min = matrix.get(i); 
+				max = matrix.get(i+1);
+				}
+			else {
+				min = matrix.get(i+1);
+				max = matrix.get(i);
+			}
+			
+		}
+		System.out.println("-------");
+		System.out.println("min = " +min);
+		System.out.println("max = " + max);
+		System.out.println("mean = "+ mean);
+		System.out.println("-------");
+	}
+
+
+	public static void main(String[] args) {
+		ARExample met = new ARExample();
+        met.n = 10;
+        met.list1.add(0 ,3f);
+		met.list1.add(1, 5f);
+		met.list1.add(2 , 4f);
+	    met.list2.add(0 , -3f);
+		met.list2.add(1 ,3f);
+		met.list2.add(2 , 5f);
+		
+		for(int i = 0 ; i < met.list1.size() ; i++) {
+			System.out.println( (i+1) + ")" +met.list1.get(i));
+		}
+		met.vProd();
+		met.vOrtho();
+		ARExample.statistics(met.list1);
+	
+		
+	}
+}
